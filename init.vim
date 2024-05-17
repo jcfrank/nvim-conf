@@ -30,7 +30,7 @@ call plug#begin()
 
 " Shorthand notation for GitHub; translates to https://github.com/preservim/nerdtree
 Plug 'preservim/nerdtree'
-Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -59,7 +59,7 @@ nmap \v :vsplit<CR>
 nmap \t :tabedit<CR>
 " simulates CtrlP with fzf
 nmap <c-p> :Files<CR>
-inoremap <leader>, <C-x><C-o>
+inoremap ,, <C-x><C-o>
 
 
 "" feline
