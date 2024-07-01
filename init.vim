@@ -39,6 +39,10 @@ Plug 'dhananjaylatkar/cscope_maps.nvim'
 Plug 'davidhalter/jedi-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'nvie/vim-flake8'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
@@ -59,13 +63,65 @@ nmap \v :vsplit<CR>
 nmap \t :tabedit<CR>
 " simulates CtrlP with fzf
 nmap <c-p> :Files<CR>
+" code completion
 inoremap ,, <C-x><C-o>
 
 
-"" feline
-lua require("feline").setup()
-"" cscope
-lua require("cscope_maps").setup()
+lua << EOL
+-- nvim-cmp
+local cmp = require'cmp'
+cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+    end,
+  },
+  window = {
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    [',,'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected it
+ems.
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    -- { name = 'vsnip' }, -- For vsnip users.
+    -- { name = 'luasnip' }, -- For luasnip users.
+    -- { name = 'ultisnips' }, -- For ultisnips users.
+    -- { name = 'snippy' }, -- For snippy users.
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+-- feline
+require'feline'.setup()
+-- cscope
+require'cscope_maps'.setup()
+-- rust
+local lspconfig = require'lspconfig'
+lspconfig.rust_analyzer.setup{
+  on_attach = function(client, bufnr)
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end,
+  capabilities = require'cmp_nvim_lsp'.default_capabilities()
+}
+-- golang
+lspconfig.gopls.setup{}
+-- python jedi
+lspconfig.jedi_language_server.setup{}
+
+EOL
 
 
 "" cscope
@@ -91,6 +147,9 @@ autocmd FileType go nmap <leader>p :GoDefPop<CR>
 "GoDecls and GoDeclsDir depend on ctrlp.
 autocmd FileType go nmap <leader>l :GoDecls<CR>
 autocmd FileType go nmap <leader>s :GoDeclsDir<CR>
+autocmd FileType go nmap <leader>e :GoReferrers<CR>
+autocmd FileType go nmap <leader>i :GoImplements<CR>
+autocmd FileType go nmap <leader>c :GoCallers<CR>
 autocmd FileType go nmap <leader>f :GoFmt<CR>
 autocmd FileType go nmap <leader>b :GoBuild<CR>
 autocmd FileType go nmap <leader>r :GoRun<CR>
@@ -104,6 +163,6 @@ autocmd FileType go nmap <leader>r :GoRun<CR>
 "let g:jedi#goto_definitions_command = ""
 "let g:jedi#documentation_command = "K"
 "let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<leader>c"
+"let g:jedi#completions_command = "<leader>c"
 "let g:jedi#rename_command = "<leader>r"
 "let g:jedi#rename_command_keep_name = "<leader>R"
