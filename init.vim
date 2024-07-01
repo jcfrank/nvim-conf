@@ -106,7 +106,9 @@ cmp.setup({
 -- feline
 require'feline'.setup()
 -- cscope
-require'cscope_maps'.setup()
+require'cscope_maps'.setup{
+  disable_maps = true
+}
 -- rust
 local lspconfig = require'lspconfig'
 lspconfig.rust_analyzer.setup{
@@ -124,13 +126,24 @@ EOL
 
 
 "" cscope
+"find all references to the token under cursor
 nmap <C-\>s :Cs find s <C-R>=expand("<cword>")<CR><CR>
+"find global definition(s) of the token under cursor
 nmap <C-\>g :Cs find g <C-R>=expand("<cword>")<CR><CR>
+"find all calls to the function name under cursor
 nmap <C-\>c :Cs find c <C-R>=expand("<cword>")<CR><CR>
+"find all instances of the text under cursor
 nmap <C-\>t :Cs find t <C-R>=expand("<cword>")<CR><CR>
+"egrep search for the word under cursor
 nmap <C-\>e :Cs find e <C-R>=expand("<cword>")<CR><CR>
+"open the filename under cursor
+nmap <C-\>f :Cs find f <C-R>=expand("<cword>")<CR><CR>
+"find files that include the filename under cursor
 nmap <C-\>i :Cs find i <C-R>=expand("<cword>")<CR><CR>
+"find functions that function under cursor calls
 nmap <C-\>d :Cs find d <C-R>=expand("<cword>")<CR><CR>
+"find places where this symbol is assigned a value
+nmap <C-\>a :Cs find a <C-R>=expand("<cword>")<CR><CR>
 
 
 "" vim-go
