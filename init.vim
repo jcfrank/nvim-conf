@@ -113,7 +113,7 @@ require'cscope_maps'.setup{
 local lspconfig = require'lspconfig'
 lspconfig.rust_analyzer.setup{
   on_attach = function(client, bufnr)
-      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
   end,
   capabilities = require'cmp_nvim_lsp'.default_capabilities()
 }
@@ -122,6 +122,26 @@ lspconfig.gopls.setup{}
 -- python jedi
 lspconfig.jedi_language_server.setup{}
 
+-- lsp key mappings
+-- In addition, these default mappings exitst:
+--     gq:  vim.lsp.buf.format
+--     K:   vim.lsp.buf.hover
+--     gc:  toggle comment
+--     gcc: toggle comment line
+-- See `:help vim.lsp.buf` for documentation.
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
+vim.keymap.set('n', 'gr', vim.lsp.buf.references)
+vim.keymap.set('n', 'gC', vim.lsp.buf.incoming_calls)
+vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename)
+vim.keymap.set({'n','v'}, '<space>tH', function()
+  vim.lsp.buf.typehierarchy'supertypes'
+end)
+vim.keymap.set({'n','v'}, '<space>th', function()
+  vim.lsp.buf.typehierarchy'subtypes'
+end)
+vim.keymap.set({'n','v'}, '<space>ca', vim.lsp.buf.code_action)
 EOL
 
 
