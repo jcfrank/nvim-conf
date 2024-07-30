@@ -129,19 +129,19 @@ lspconfig.jedi_language_server.setup{}
 --     gc:  toggle comment
 --     gcc: toggle comment line
 -- See `:help vim.lsp.buf` for documentation.
-vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
-vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
-vim.keymap.set('n', 'gr', vim.lsp.buf.references)
-vim.keymap.set('n', 'gC', vim.lsp.buf.incoming_calls)
-vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename)
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {desc="Go to declaration."})
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {desc="Go to definition."})
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {desc="Go to implementation."})
+vim.keymap.set('n', 'grr', vim.lsp.buf.references, {desc="Go to references."})
+vim.keymap.set('n', 'grn', vim.lsp.buf.rename, {desc="Rename selected symbol."})
+vim.keymap.set({'n','v'}, 'gra', vim.lsp.buf.code_action, {desc="List code actions."})
+vim.keymap.set('n', 'gC', vim.lsp.buf.incoming_calls, {desc="Go to incoming calls."})
 vim.keymap.set({'n','v'}, '<space>tH', function()
   vim.lsp.buf.typehierarchy'supertypes'
-end)
+end, {desc="List supertypes."})
 vim.keymap.set({'n','v'}, '<space>th', function()
   vim.lsp.buf.typehierarchy'subtypes'
-end)
-vim.keymap.set({'n','v'}, '<space>ca', vim.lsp.buf.code_action)
+end, {desc="List subtypes."})
 EOL
 
 
