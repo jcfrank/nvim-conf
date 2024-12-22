@@ -108,6 +108,7 @@ vim.keymap.set('n', 'gC', vim.lsp.buf.incoming_calls, {desc="Go to incoming call
 vim.keymap.set('n', 'gf', ":silent !black %<CR>", {desc="Format current buffer with black."})
 vim.keymap.set('n', 'gfi', ":silent !isort %<CR>", {desc="Format current buffer with isort."})
 vim.keymap.set('n', 'gff', ":Flake<CR>", {desc="Run Flake8."})
+vim.keymap.set({'n','v'}, 'gq', vim.lsp.buf.format, {desc="LSP format current buf."})
 vim.keymap.set({'n','v'}, '<space>tH', function()
   vim.lsp.buf.typehierarchy'supertypes'
 end, {desc="List supertypes."})
