@@ -7,7 +7,7 @@ Neovim config
 Mapping reference
 * https://github.com/SpaceVim/SpaceVim/blob/2c92c0b51ffa5303eb54f54b3ea5a1a8385a36bc/bundle/nvim-lspconfig/README.md?plain=1#L112
 
-## Jedi vim
+## Install python dependencies
 ```
-pip install -U jedi-language-server pynvim
+make install-py
 ```
