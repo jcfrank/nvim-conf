@@ -1,0 +1,7 @@
+jedi
+jedi-language-server
+pynvim
+virtualenv
+flake8
+black
+isort
