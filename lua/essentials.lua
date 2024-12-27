@@ -35,6 +35,24 @@ lspconfig.rust_analyzer.setup(coq.lsp_ensure_capabilities{
   end,
 })
 -- golang
+-- https://github.com/golang/tools/tree/master/gopls
 lspconfig.gopls.setup(coq.lsp_ensure_capabilities{})
 -- python jedi
+-- https://github.com/pappasam/jedi-language-server
 lspconfig.jedi_language_server.setup(coq.lsp_ensure_capabilities{})
+-- jsonls
+-- https://github.com/hrsh7th/vscode-langservers-extracted
+--`npm i -g vscode-langservers-extracted`
+lspconfig.jsonls.setup(coq.lsp_ensure_capabilities{})
+-- yamlls
+-- https://github.com/redhat-developer/yaml-language-server
+--`yarn global add yaml-language-server`
+lspconfig.yamlls.setup(coq.lsp_ensure_capabilities{})
+-- protols
+-- https://github.com/coder3101/protols
+--[[
+  `cargo install protols`
+  Install clang-format to enable lsp format.
+  E.g. In MacOS, `brew install clang-format`.
+]]--
+lspconfig.protols.setup(coq.lsp_ensure_capabilities{})
