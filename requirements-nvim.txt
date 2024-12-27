@@ -5,3 +5,4 @@ virtualenv
 flake8
 black
 isort
+pyright

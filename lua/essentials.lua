@@ -39,7 +39,14 @@ lspconfig.rust_analyzer.setup(coq.lsp_ensure_capabilities{
 lspconfig.gopls.setup(coq.lsp_ensure_capabilities{})
 -- python jedi
 -- https://github.com/pappasam/jedi-language-server
+-- `pip install jedi-language-server`
 lspconfig.jedi_language_server.setup(coq.lsp_ensure_capabilities{})
+--[[
+-- pyright
+-- https://github.com/microsoft/pyright
+-- `pip install pyright`
+lspconfig.pyright.setup(coq.lsp_ensure_capabilities{})
+]]--
 -- jsonls
 -- https://github.com/hrsh7th/vscode-langservers-extracted
 --`npm i -g vscode-langservers-extracted`
