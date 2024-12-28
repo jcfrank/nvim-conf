@@ -58,8 +58,8 @@ lspconfig.yamlls.setup(coq.lsp_ensure_capabilities{})
 -- protols
 -- https://github.com/coder3101/protols
 --[[
-  `cargo install protols`
-  Install clang-format to enable lsp format.
-  E.g. In MacOS, `brew install clang-format`.
+   `cargo install protols`
+   Install clang-format to enable lsp format.
+   E.g. In MacOS, `brew install clang-format`.
 ]]--
 lspconfig.protols.setup(coq.lsp_ensure_capabilities{})

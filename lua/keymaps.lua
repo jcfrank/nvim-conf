@@ -1,6 +1,7 @@
 -- essentials
 vim.keymap.set('n', '\\b', ':Buffers<CR>', {desc="fzf buffers."})
 vim.keymap.set('n', '\\f', ':Files<CR>', {desc="fzf files."})
+vim.keymap.set('n', '\\g', ':Rg<CR>', {desc="fzf ripgrep."})
 vim.keymap.set('n', '\\l', ':Lines<CR>', {desc="fzf Lines."})
 vim.keymap.set('n', '\\c', ':Commands<CR>', {desc="fzf Commands."})
 vim.keymap.set('n', '\\n', ':NERDTree %:h<CR>', {desc="NERDTree."})
