@@ -63,3 +63,19 @@ lspconfig.yamlls.setup(coq.lsp_ensure_capabilities{})
    E.g. In MacOS, `brew install clang-format`.
 ]]--
 lspconfig.protols.setup(coq.lsp_ensure_capabilities{})
+
+
+-- none-ls
+-- https://github.com/nvimtools/none-ls.nvim/blob/main/README.md
+--[[
+   `pip install isort black`
+   `yarn global add --exact prettier`
+]]--
+local null_ls = require("null-ls")
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.isort,
+        null_ls.builtins.formatting.prettier,
+    },
+})

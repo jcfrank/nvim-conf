@@ -33,6 +33,9 @@ Plug('nvie/vim-flake8')
 Plug('neovim/nvim-lspconfig')
 Plug('ms-jpq/coq_nvim', { ['branch'] = 'coq'})
 Plug('ms-jpq/coq.artifacts', { ['branch'] = 'artifacts'})
+-- Extra Lua functions. A none-ls dependency.
+Plug('nvim-lua/plenary.nvim')
+Plug('nvimtools/none-ls.nvim')
 --[[
    Initialize plugin system
    - Automatically executes `filetype plugin indent on` and `syntax enable`.
