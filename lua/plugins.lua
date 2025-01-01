@@ -11,7 +11,7 @@ vim.call('plug#begin')
      - Avoid using standard Vim directory names like 'plugin'
 
    Make sure you use single quotes
---]]
+]] --
 
 -- Shorthand notation for GitHub; translates to https://github.com/preservim/nerdtree
 Plug('preservim/nerdtree')
