@@ -63,6 +63,10 @@ lspconfig.yamlls.setup(coq.lsp_ensure_capabilities{})
    E.g. In MacOS, `brew install clang-format`.
 ]]--
 lspconfig.protols.setup(coq.lsp_ensure_capabilities{})
+-- lua_ls
+-- https://github.com/luals/lua-language-server
+-- `brew install lua-language-server`
+lspconfig.lua_ls.setup(coq.lsp_ensure_capabilities {})
 
 
 -- none-ls

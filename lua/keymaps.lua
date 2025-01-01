@@ -10,6 +10,10 @@ vim.keymap.set('n', '\\v', ':vsplit<CR>', {desc="Vertical split."})
 vim.keymap.set('n', '\\t', ':tabedit<CR>', {desc="New tab."})
 vim.keymap.set('n', '<C-p>', ':Files<CR>', {desc="CtrlP simulation."})
 vim.keymap.set('i', ',,', '<C-x><C-o>', {desc="Code completion.", noremap = true})
+local rebuild_cs = ':!find -E . -regex ".*\\.(py|ya?ml|go)$" -not ' ..
+	'\\( -path "./build/*" -o -path "./env*/*" -o -path "./.*/*" \\) > ' ..
+	'cscope.files && cscope -bRq && ctags -L cscope.files<CR>'
+vim.keymap.set('n', 'gb', rebuild_cs, { desc = "Rebuild cscope database." })
 
 
 -- lsp
