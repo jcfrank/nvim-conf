@@ -19,10 +19,12 @@ Plug('preservim/nerdtree')
    * https://github.com/junegunn/fzf.vim?tab=readme-ov-file
    * https://github.com/junegunn/fzf
    `brew install ripgrep`
-]]--
-Plug('junegunn/fzf', { ['do'] = function()
-    vim.fn['fzf#install']()
-end})
+]] --
+Plug('junegunn/fzf', {
+	['do'] = function()
+		vim.fn['fzf#install']()
+	end
+})
 Plug('junegunn/fzf.vim')
 Plug('tpope/vim-fugitive')
 Plug('feline-nvim/feline.nvim')
@@ -31,18 +33,18 @@ Plug('Vimjas/vim-python-pep8-indent')
 -- `pip install flake8`
 Plug('nvie/vim-flake8')
 Plug('neovim/nvim-lspconfig')
-Plug('ms-jpq/coq_nvim', { ['branch'] = 'coq'})
-Plug('ms-jpq/coq.artifacts', { ['branch'] = 'artifacts'})
+Plug('ms-jpq/coq_nvim', { ['branch'] = 'coq' })
+Plug('ms-jpq/coq.artifacts', { ['branch'] = 'artifacts' })
 -- Extra Lua functions. A none-ls dependency.
 Plug('nvim-lua/plenary.nvim')
 Plug('nvimtools/none-ls.nvim')
 --[[
    Initialize plugin system
    - Automatically executes `filetype plugin indent on` and `syntax enable`.
-]]-- 
+]] --
 vim.call('plug#end')
 --[[
    You can revert the settings after the call like so:
      vim.cmd('filetype indent off')  " Disable file-type-specific indentation
      vim.cmd('syntax off')       " Disable syntax highlighting
-]]--
+]] --
