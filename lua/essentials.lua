@@ -76,6 +76,35 @@ lspconfig.lua_ls.setup(coq.lsp_ensure_capabilities {})
    `yarn global add --exact prettier`
 ]] --
 local null_ls = require("null-ls")
+local helpers = require("null-ls.helpers")
+
+local flake8 = {
+	name = "flake8",
+	method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+	filetypes = { "python" },
+	generator = null_ls.generator {
+		command = "flake8",
+		args = { "$FILENAME" },
+		to_stdin = true,
+		from_stdout = true,
+		format = "line",
+		check_exit_code = function(code, stderr)
+			local success = code <= 1
+			if not success then
+				print(stderr)
+			end
+			return success
+		end,
+		on_output = helpers.diagnostics.from_patterns({
+			{
+				pattern = [[(.*):(%d+):(%d+):(.*)]],
+				groups = { "filename", "row", "col", "message" }
+			},
+		}),
+	},
+}
+null_ls.register(flake8)
+
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.black,
