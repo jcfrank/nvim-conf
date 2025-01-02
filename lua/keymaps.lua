@@ -10,7 +10,7 @@ vim.keymap.set('n', '\\v', ':vsplit<CR>', { desc = "Vertical split." })
 vim.keymap.set('n', '\\t', ':tabedit<CR>', { desc = "New tab." })
 vim.keymap.set('n', '<C-p>', ':Files<CR>', { desc = "CtrlP simulation." })
 vim.keymap.set('n', 'gff', ':Flake<CR>', { desc = "Run Flake8." })
-local rebuild_cs = ':!find -E . -regex ".*\\.(py|ya?ml|go)$" -not ' ..
+local rebuild_cs = ':!find -E . -regex ".*\\.(py|ya?ml|go|proto)$" -not ' ..
 	'\\( -path "./build/*" -o -path "./env*/*" -o -path "./.*/*" \\) > ' ..
 	'cscope.files && cscope -bRq && ctags -L cscope.files<CR>'
 vim.keymap.set('n', 'gb', rebuild_cs, { desc = "Rebuild cscope database." })
@@ -52,3 +52,4 @@ vim.keymap.set('n', '<C-\\>f', ':Cs find f ', { desc = "Open the filename under 
 vim.keymap.set('n', '<C-\\>i', ':Cs find i ', { desc = "Find files that include the filename under cursor." })
 vim.keymap.set('n', '<C-\\>d', ':Cs find d ', { desc = "Find functions that function under cursor calls." })
 vim.keymap.set('n', '<C-\\>a', ':Cs find a ', { desc = "Find places where this symbol is assigned a value." })
+vim.keymap.set('n', '<C-\\>h', ':Cs help<CR>', { desc = "Show help." })
