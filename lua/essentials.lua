@@ -105,10 +105,18 @@ local flake8 = {
 }
 null_ls.register(flake8)
 
+-- default timeout 10,000 milliseconds.
+local tout = 10000
 null_ls.setup({
 	sources = {
-		null_ls.builtins.formatting.black,
-		null_ls.builtins.formatting.isort,
-		null_ls.builtins.formatting.prettier,
+		null_ls.builtins.formatting.black.with {
+			timeout = tout,
+		},
+		null_ls.builtins.formatting.isort.with {
+			timeout = tout,
+		},
+		null_ls.builtins.formatting.prettier.with {
+			timeout = tout,
+		},
 	},
 })
