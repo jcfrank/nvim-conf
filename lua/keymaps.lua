@@ -33,7 +33,9 @@ vim.keymap.set('n', 'grn', vim.lsp.buf.rename, { desc = "Rename selected symbol.
 vim.keymap.set({ 'n', 'v' }, 'gla', vim.lsp.buf.code_action, { desc = "List code actions." })
 vim.keymap.set('n', 'gC', vim.lsp.buf.incoming_calls, { desc = "Go to incoming calls." })
 vim.keymap.set('n', 'gls', vim.lsp.buf.workspace_symbol, { desc = "List all symbols in the current workspace." })
-vim.keymap.set({ 'n', 'v' }, 'gq', vim.lsp.buf.format, { desc = "LSP format current buf." })
+vim.keymap.set({ 'n', 'v' }, 'gq', function()
+	vim.lsp.buf.format { timeout_ms = 10000 }
+end, { desc = "LSP format current buf." })
 vim.keymap.set({ 'n', 'v' }, 'gH', function()
 	vim.lsp.buf.typehierarchy 'supertypes'
 end, { desc = "List supertypes." })
