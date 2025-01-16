@@ -97,8 +97,8 @@ local flake8 = {
 		end,
 		on_output = helpers.diagnostics.from_patterns({
 			{
-				pattern = [[(.*):(%d+):(%d+):(.*)]],
-				groups = { "filename", "row", "col", "message" }
+				pattern = [[(.*):(%d+):(.*)]],
+				groups = { "filename", "row", "message" }
 			},
 		}),
 	},
