@@ -118,5 +118,8 @@ null_ls.setup({
 		null_ls.builtins.formatting.prettier.with {
 			timeout = tout,
 		},
+		null_ls.builtins.diagnostics.golangci_lint.with {
+			timeout = tout,
+		},
 	},
 })
