@@ -1,6 +1,11 @@
-.PHONY:	install-py install-brew install-np install-cargo install-node install-go install-rust
+.PHONY:	install-py install-brew install-np install-cargo install-node install-go install-rust cp
 
-default: install-py install-brew install-np install-cargo
+default: cp install-py install-brew install-np install-cargo
+
+cp:
+	mkdir -p ~/.config/nvim
+	cp init.lua ~/.config/nvim/init.lua
+	cp -r lua ~/.config/nvim/lua
 
 install-py:
 	pip install -r requirements-nvim.txt
