@@ -1,6 +1,6 @@
-.PHONY:	install-py install-brew install-np install-cargo install-node install-go install-rust cp
+.PHONY:	cp install-py install-brew install-np install-protols install-gopls install-node install-go install-rust
 
-default: cp install-py install-brew install-np install-cargo
+default: cp install-py install-brew install-np install-protols install-gopls
 
 cp:
 	mkdir -p ~/.config/nvim
@@ -17,8 +17,11 @@ install-np:
 	npm i -g yarn
 	yarn global add vscode-langservers-extracted yaml-language-server prettier
 
-install-cargo:
+install-protols:
 	cargo install protols
+
+install-gopls:
+	go install golang.org/x/tools/gopls@latest
 
 # Alternatively, can be installed from nvm.
 install-node:
