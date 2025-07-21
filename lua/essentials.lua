@@ -75,9 +75,14 @@ lspconfig.lua_ls.setup(coq.lsp_ensure_capabilities {})
    `pip install isort black`
    `yarn global add --exact prettier`
 ]] --
+vim.diagnostic.config({
+	virtual_lines = true,
+	-- virtual_text = true,
+})
 local null_ls = require("null-ls")
 local helpers = require("null-ls.helpers")
 
+-- null_ls.setup({ debug = true })
 local flake8 = {
 	name = "flake8",
 	method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
@@ -121,5 +126,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.golangci_lint.with {
 			timeout = tout,
 		},
+		null_ls.builtins.formatting.gofmt,
+		null_ls.builtins.formatting.goimports,
 	},
 })
