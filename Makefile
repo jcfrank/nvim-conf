@@ -29,7 +29,7 @@ install-node:
 
 # Alternatively, can be installed from gvm.
 install-go:
-	brew install golang
+	brew install golang golangci-lint
 
 install-rust:
 	brew install rust
